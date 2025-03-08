@@ -11,9 +11,13 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        let add = add(a: 4, b: 6)
+        print("Add:\(add)")
     }
 
+    func add(a: Int, b: Int) -> Int {
+        return a + b
+    }
 
 }
 
