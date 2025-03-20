@@ -18,6 +18,18 @@ class ViewController: UIViewController {
     func add(a: Int, b: Int) -> Int {
         return a + b
     }
+    
+    
 
+}
+
+extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
 }
 
