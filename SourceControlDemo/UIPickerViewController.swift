@@ -7,29 +7,48 @@
 
 import UIKit
 
-class UIPickerViewController: UIViewController {
+class UIPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 2
+    }
     
-    let data = ["one","two","three"]
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if component == 0{
+            return data.count
+        }else{
+            return number.count
+        }
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
+        if component == 0{
+            return data[row]
+        }else{
+            return number[row]
+        }
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
+        if component == 0{
+            print("Selected data \(data[row])")
+        }else {
+            print("selected number \(number[row])")
+        }
+}
+
+    
+    
+    @IBOutlet weak var pickerView: UIPickerView!
+    let data = ["one","two","three","Four"]
+    let number = ["1","2","3","4","5"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        
-    }
+        pickerView.delegate = self
+       pickerView.dataSource = self
+ }
     
 }
-extension UIViewController: UIPickerViewDataSource, UIPickerViewDelegate {
-    public func numberOfComponents(in pickerView: UIPickerViewController) -> Int {
-        return 1
-    }
-    
-    public func pickerView(_ pickerView: UIPickerViewController, numberOfRowsInComponent component: Int) -> Int {
-        return data.count
-    }
-    
-        
-        
-        
-    }
+
+
 
